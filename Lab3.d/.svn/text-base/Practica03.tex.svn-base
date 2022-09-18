@@ -1,0 +1,415 @@
+\documentclass[article,12pt]{article}
+\input{../header}
+
+\title{AI 4 Games \\
+Assessment Milestone 3\\
+GUI framework with Qt
+ }
+\author{Vladimir Estivill-Castro\\
+Griffith University }
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Objectives}
+\begin{enumerate}
+\item  Review \Cpp\/ programming.
+
+\item Constructing a GUI with the ``framework'' Qt.
+
+\item The software pattern
+MVC (Model-View-Controller).
+
+\end{enumerate}
+
+\section*{Instructions}
+This practical laboratory has several parts. Each part concentrates
+on at least one learning objective.
+All these objectives are designed to set-up the starting code to
+develop a computer game where you can progressively add artificial intelligence
+to the characters in the game. The goal is that you
+would have more sophisticated monsters that chase the player, and that you
+can provide more capabilities than bomb to fight the monsters
+from the player. As you provide more abilities to the player
+you may need to provide more intelligence to the monsters
+(or classes of monsters, for example, monsters wiht a compass,
+with a sense of smell, with shooting capturing nets).
+
+You will need to complete several steps. The instructions here are guidelines.
+There are many places you will have to experiment and fill in the gaps.
+
+\section*{Subversion and teams}
+Your instructor may decide to group students in teams for this project. If
+that is the case, it is also advisable to have 
+{\bf Subversion} support the effort of the team.
+This means setting a subversion repository somewhere in a server machine where
+members of the team belong to a user group and users of that group shall
+have all privileges to act on t eh repository.
+This is a technical matter that is not the main subject matter of the
+course and will not be discussed further.
+We only insist that using version control in a team is truly useful
+and full documentation on {\tt svn } can be found in
+\begin{quote}
+\url{http://svnbook.red-bean.com/ }
+\end{quote}
+
+
+
+\section*{Coding standards}
+Coding standard help understand the purpose of each element or component
+in a computer program. They also help structuring and reinforcing solid
+structuring practices of the code. The textbook
+``Artificial Intelligence For Games'' spends several paragraphs
+in the first 2 chapters explaining the coding standards and the notation that will be used.
+Some of the standards are required by documentation generation tools like
+{\tt doxygen}.
+The purpose of this exercise is to review the code provide it and make
+revision so it conforms to the standards we will detail next.
+Reviewing code this way will help you understand even more what the code
+does, and more importantly what elements are visible and what not
+externally to a class or module.
+In many cases, these standards are also needed because of the
+way the programming language allocates and deallocates memory.
+There is a tutorial associated with this lab on memory management.
+For example, each of the three following very popular object-oriented
+programming languages has a different approach to memory management.
+Recall
+\Cpp\/ leaves this responsibility completely to the programmer
+with maximum flexibility  ({\tt Java}  has  a garbage collector
+freeing the programmer completely of memory management responsibilities).
+{\tt Objective-C} ha somewhat a policy in between with tools to
+keep counts on references.
+
+\begin{enumerate}
+\item  Standard for identifiers and code.
+
+\begin{itemize}
+\item Standard names\\
+ ({\tt AClass},{\tt \_anAttributte}, 
+       {\tt localVariable}, {\tt aMethod}).
+    \item  Names of methods shall be self-explanatory and without abbreviations.
+    \item No boolean getters
+ {\tt anAttribute()}
+and setters
+ with \\ {\tt anAnttribute(newValue)}.
+    \item Access to Boolean values and testing the state
+of an object 
+\\ {\tt isCreativeCommons()}, 
+{\tt is unLoaaded()},  {\tt hasExpitred()}, \\
+while setters and imperatives to the object
+ {\tt followCreativeCommons()}, 
+{\tt unload()},  {\tt expire()}, etc.
+    \item When doing {\tt Unit-Testing } or {\tt TDD},
+the testing methods may be an exception to the rule
+and we will use a word of verb for what is being tested
+(and the conditions for the test).
+For example:
+{\tt testAddTo List\_whenNameOfArtistExists()}.
+\end{itemize}
+
+\item
+Accessibility to members
+
+\begin{itemize}
+    \item All attributes are {\tt private} (or {\tt protected}  if it is justified).
+    \item Select the most restrictive visibility as
+({\tt private}, {\tt protected} or {\tt public}) for each method.
+\end{itemize}
+
+\item Implementing methods.
+
+\begin{itemize}
+    \item Short methods, using fast exists specially when we have
+nested
+{\tt if/else}s.
+    \item  Methods that are {\tt getters}, and that do not modify the
+sate of the object are always declared constant with a
+{\tt const} at the end of the declaration:
+\begin{quote}
+{\tt
+       ReturnType myMethod(parameters) {\bf const}
+}
+\end{quote}
+The compiler will then warns us if attributes are being modified or this
+method uses methods that are not const.
+
+\item Parameters that are objects are passed by reference so we avoid the cost
+of copying (and allocation). The reference must be declared constant
+if the receiver methods no requires to modify the object.
+\begin{quote}
+{\tt
+ void myMethod( {\bf const} Type {\bf \&} object)
+}
+\end{quote}
+We can only invoke constant methods on an object received as constant.
+The compiler will ensure this and that way we have no side effects
+on the received object.
+\item  Parameters that are of basic types are not passed by reference, and also
+for basic references.
+\begin{quote}
+{\tt
+ float myMethod(int value)
+}
+\end{quote}
+
+\item We return constant references to return objects that are not basic:
+\begin{quote}
+{\tt
+{\bf const} Type {\bf \&} myMethod() {\bf const} { return \_member; }
+}
+\end{quote}
+
+\item We do clone (copy) objects we return when created locally
+inside a proprietary methods (name these methods informally
+as getters by construction).
+\begin{quote}
+{\tt
+Type myMethod() \{ Type result; ...; return result; \}
+}
+\end{quote}
+The reason is we do not return references to objects that expire when out current
+context s a method terminates.
+\item
+When the parameter passing or the return reference value transfer the
+responsibility of eliminating the object (and recycling its memory),
+we will use as a standard a counter of references.
+\begin{quote}
+{\tt
+// We transfer to the caller the object that was on the receiver: \\
+	Type * extractObject();   \\
+\mbox { }\\
+ // Create and transfer to caller (no longer in receiver)  \\
+	Type * createType() const;  \\
+\mbox { }\\
+ // Transfer to caller and no longer in receptor  \\
+	void adopt(Type *); \\
+\mbox { }\\
+ // Transfer to the caller and elimination \\
+	void eliminated(Type *) const;
+}
+\end{quote}
+	
+
+
+
+
+
+\end{itemize}
+\end{enumerate}
+
+\subsection*{Important points}
+\begin{itemize}
+\item Memory management is a central issue and particularly in \Cpp\/
+Therefore, review the following points.
+\begin{enumerate}
+\item In \Cpp\/ there is no {\em garbage collector} to eliminate un-referenced objects.
+Remember many objects are created and eliminated automaticly by the
+mechanisms of the run-time stack.
+\begin{itemize}
+\item
+	Local objects of a method are destroyed automaticly when we
+exit the context of the method.
+\item
+	All members that are not pointers (not references) of an object are
+created with the constructor and deallocated automaticly by
+the destructor.
+\item
+	All objects created using
+      {\em new} are subject to memory management and must be deallocated
+with the call to 
+{\tt delete}.
+For this follow strict discipline and convention common in development tea,s
+to manage the responsibility of deleting objects.
+\end{itemize}
+
+\item
+Conventions regarding memory allocation
+\begin{itemize}
+
+\item We will tend to leave the responsibility of eliminating an object
+to the class that create it.
+\item
+We may acquire the responsibility of an object by calling a method that
+inside has a
+{\tt new}, only if we are clear of receiving is as a parameter or as the return value
+of the called method.
+\item
+When we create an object and delegate the responsibility to
+{\tt this} we must provide a method for cleaning the object and
+at least deal with this responsibility on the destructor of {\tt this}
+\item
+Never place two types of roles in the same pointer variable
+where in one case the pointer is a reference without responsibility to
+recycle memory and in another section of the code, there is the responsibility
+to recycle the object.
+\item
+If an object pointer by a pointer is eliminated, it should be
+good practice to set e the pointer to null.
+\item
+If we assign an object to a pointer and the pointer is not null,
+the object being pointed should be recycled there.
+\item
+When an methods transfers responsibility of the memory management of
+and object, it should always do this to its caller.
+\item
+When by parameter passing or by return value a transfer of responsibility
+is happening, adopt the convention of making a reference count.
+
+\begin{quote}
+{\tt
+
+\mbox{ } \\
+  // Transfer that does not affect this\\
+      	Type * createType() const;\\
+\mbox{ } \\
+ // Transfer into this \\
+      	void adopt(Type *);
+}
+\end{quote}
+
+
+\end{itemize}
+
+
+
+\end{enumerate}
+
+\end{itemize}
+
+\subsection*{Task  }
+The code provide it does not follow the conventions of codding indicated above
+on purpose. It is your job to review all the class names and method names
+and apply the corresponding editing changes to ensure the code complies
+with these conventions.
+Moreover, the code has no implementation of any memory management.
+Many classes that need it do not have a destructor, and therefore, no
+objects are recycled. Review the code provided carefully
+and ensure yourself that all objects not required are properly released
+and that there are no memory leaks.
+
+
+\section*{Framework {\tt Qt} for the GUIs}
+In order to get you started with
+{\tt Qt} you are required here to complete the standard tutorial.
+We strongly encourage you to carry out the tutorial using a
+version control system.
+Each of the 14 stages of development should be completed.
+We strongly recommend you do not just download each file and execute it,
+but actually start with the very first file and edit each file
+yourself to achieve the next stage. At each stage perform a {\tt commit}
+into the {\tt svn} repository of the new achieved functionality.
+On the Web, the tutorial is in\\
+\url{
+http://doc.trolltech.com/4.4/tutorials-tutorial.html
+}
+You must complete the 14 tutorial chapter. Again, we insist you do this tutorial
+by editing file into the next level. Do no just download the next stage of files.
+You will learn much more from reflecting on mistakes and actually putting
+in the lines of code.
+\begin{enumerate}
+\item Hello World!
+\item Calling it Quits
+\item    Family Values
+\item    Let There Be Widgets
+\item    Building Blocks
+\item    Building Blocks Galore!
+\item    One Thing Leads to Another
+\item    Preparing for Battle
+\item    With Cannon You Can
+\item   Smooth as Silk
+\item   Giving It a Shot
+\item   Hanging in the Air the Way Bricks Don't
+\item   Game Over
+\item   Facing the Wall
+\end{enumerate}
+As we suggested, do at least one
+{\tt svn commit} at the end of each chapter.
+Each new version is committed, not each new file. Use tags
+to tags the chapter version in case you do more frequent commits.
+Look at for {\tt svn} documentation \\
+\url{
+http://svnbook.red-bean.com/en/1.1/ch04s06.html
+}
+A {\em tag} 
+is a copy of the state of your files in a folder at a particular time.
+For grading purposes by your lecturer/tutor it is important
+to tag the version after the end of each chapter of the
+{\tt Qt} tutorials.
+The tags should be {\tt t1}, {\tt t2}, ..., {\tt t14}.
+
+For programming with {\tt Qt}
+there is a reference manual available on the WEB\\
+\url{
+http://doc.trolltech.com/4.4/index.html
+}
+
+
+\begin{quote}
+%\framebox{
+%\parbox{12cm}{
+%}
+%\parbox{12cm}{{\bf Important:} 
+{\bf Important:} 
+You may need to install 
+{\tt Qt} for LINUX and/or MacOs. This is usually a simple process.
+Follow the instruction on the Qt web-site if you have problems
+installing but under LINUX is usually a standard package and
+also on MacOS, {\tt port} can install it rather easy.
+
+Depending on what is installed the command to build
+projects with {\tt Qt} may change to indicate the version installed.
+Sometimes it is
+{\tt qmake-qt4}
+sometime is simply
+{\tt qmake}.
+
+Typically, the setting up of a Makefile and the compiling is achieved with the
+three steps below:
+\begin{flushleft}
+{\tt qmake-qt4 -project}\\
+{\tt qmake-qt4 }\\
+{\tt make }\\
+\end{flushleft}
+
+%}
+%}
+\end{quote}
+
+\section*{Task --- the pattern MVC}
+Draw the class diagram of all the classes in the folder
+{\tt PacManQt}.
+Study the code and make sure that you can follow what is the responsibility of
+each class. remember you have to make sure it compiles with the
+standards of coding practice.
+
+You will see that the design and architecture is very similar with the
+version that didn't have a Graphical User Interface.
+Make sure you organize the class diagram to show th
+pattern MVC. 
+The code supplied is a model to get you started on a game.
+Identify the classes that constitute the GUI nd the classes
+that constitute the
+  {\em controller}.
+
+Compile and run the code. While at the moment the graphics ar e not fancy
+and the prototype does very little it is the base architecture to start
+to make more intelligent characters.
+
+Study also the dynamic behavior to identify the elements that constitute the
+{\em View}.
+Draw the corresponding UML interaction diagram that reflects the dynamic behavior
+of the program.
+You may not need to follow all that happens inside
+the classes of {\tt Qt}.
+
+{\bf You must submit both diagrams}.
+
+
+\section*{Documentation}
+Add targets to the corresponding
+{\tt makefile} so that your project generates the documentation
+automatically.
+\end{document}

@@ -1,0 +1,30 @@
+
+.SUFFIXES: .tex .make
+.SUFFIXES: .tex .cpp
+.SUFFIXES: .tex .h
+
+#
+CPP3CODE=CppPractice
+CPP3CODETeX=CppPracticeTeX
+#
+P3SOURCETeX = Practica03.tex 
+
+.cpp.tex:
+	highlight -t 8  -O latex $(CPP3CODE)/$*.cpp | awk -f ../la2tex.awk > $(CPP3CODETeX)/$*.tex
+
+.make.tex:
+	highlight -t 8  -O latex $(CPP3CODE)/$*.make | awk -f ../la2tex.awk > $(CPP3CODETeX)/$*.tex
+
+.h.tex:
+	highlight -t 8  -O latex $(CPP3CODE)/$*.h | awk -f ../la2tex.awk > $(CPP3CODETeX)/$*.tex
+
+Practica03 : Practica03.pdf Practica03.html
+
+Practica03.html : $(P3SOURCETeX)
+	latex2html Practica03.tex
+
+Practica03.pdf :$(P3SOURCETeX)
+	pdflatex Practica03.tex
+
+clean:
+	rm $(P3CODETeX) ./*.tex

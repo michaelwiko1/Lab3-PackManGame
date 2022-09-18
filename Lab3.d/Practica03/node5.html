@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Important points</TITLE>
+<META NAME="description" CONTENT="Important points">
+<META NAME="keywords" CONTENT="Practica03">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica03.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="node4.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html68"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html66"
+  HREF="node4.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html60"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html69"
+  HREF="node6.html">Task</A>
+<B> Up:</B> <A NAME="tex2html67"
+  HREF="node4.html">Coding standards</A>
+<B> Previous:</B> <A NAME="tex2html61"
+  HREF="node4.html">Coding standards</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00041000000000000000">
+Important points</A>
+</H2>
+
+<UL>
+<LI>Memory management is a central issue and particularly in <TT>C++</TT>
+Therefore, review the following points.
+
+<OL>
+<LI>In <TT>C++</TT> there is no <EM>garbage collector</EM> to eliminate un-referenced objects.
+Remember many objects are created and eliminated automaticly by the
+mechanisms of the run-time stack.
+
+<UL>
+<LI>Local objects of a method are destroyed automaticly when we
+exit the context of the method.
+</LI>
+<LI>All members that are not pointers (not references) of an object are
+created with the constructor and deallocated automaticly by
+the destructor.
+</LI>
+<LI>All objects created using
+      <EM>new</EM> are subject to memory management and must be deallocated
+with the call to 
+<TT>delete</TT>.
+For this follow strict discipline and convention common in development tea,s
+to manage the responsibility of deleting objects.
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI>Conventions regarding memory allocation
+
+<UL>
+<LI>We will tend to leave the responsibility of eliminating an object
+to the class that create it.
+</LI>
+<LI>We may acquire the responsibility of an object by calling a method that
+inside has a
+<TT>new</TT>, only if we are clear of receiving is as a parameter or as the return value
+of the called method.
+</LI>
+<LI>When we create an object and delegate the responsibility to
+<TT>this</TT> we must provide a method for cleaning the object and
+at least deal with this responsibility on the destructor of <TT>this</TT>
+</LI>
+<LI>Never place two types of roles in the same pointer variable
+where in one case the pointer is a reference without responsibility to
+recycle memory and in another section of the code, there is the responsibility
+to recycle the object.
+</LI>
+<LI>If an object pointer by a pointer is eliminated, it should be
+good practice to set e the pointer to null.
+</LI>
+<LI>If we assign an object to a pointer and the pointer is not null,
+the object being pointed should be recycled there.
+</LI>
+<LI>When an methods transfers responsibility of the memory management of
+and object, it should always do this to its caller.
+</LI>
+<LI>When by parameter passing or by return value a transfer of responsibility
+is happening, adopt the convention of making a reference count.
+
+<P>
+<P>
+<BLOCKQUOTE><TT>  
+<BR>  // Transfer that does not affect this
+<BR>
+Type * createType() const;
+<BR>  
+<BR> // Transfer into this 
+<BR>
+void adopt(Type *);
+</TT>
+
+</BLOCKQUOTE>
+
+<P>
+</LI>
+</UL>
+
+<P>
+</LI>
+</OL>
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html68"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html66"
+  HREF="node4.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html60"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html69"
+  HREF="node6.html">Task</A>
+<B> Up:</B> <A NAME="tex2html67"
+  HREF="node4.html">Coding standards</A>
+<B> Previous:</B> <A NAME="tex2html61"
+  HREF="node4.html">Coding standards</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-24
+</ADDRESS>
+</BODY>
+</HTML>

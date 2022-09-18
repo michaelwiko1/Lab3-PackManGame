@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Framework Qt for the GUIs</TITLE>
+<META NAME="description" CONTENT="Framework Qt for the GUIs">
+<META NAME="keywords" CONTENT="Practica03">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="Practica03.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="Practica03.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html86"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html84"
+  HREF="Practica03.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html78"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html87"
+  HREF="node8.html">Task   the</A>
+<B> Up:</B> <A NAME="tex2html85"
+  HREF="Practica03.html">AI 4 Games Assessment</A>
+<B> Previous:</B> <A NAME="tex2html79"
+  HREF="node6.html">Task</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000">
+Framework <TT>Qt</TT> for the GUIs</A>
+</H1>
+In order to get you started with
+<TT>Qt</TT> you are required here to complete the standard tutorial.
+We strongly encourage you to carry out the tutorial using a
+version control system.
+Each of the 14 stages of development should be completed.
+We strongly recommend you do not just download each file and execute it,
+but actually start with the very first file and edit each file
+yourself to achieve the next stage. At each stage perform a <TT>commit</TT>
+into the <TT>svn</TT> repository of the new achieved functionality.
+On the Web, the tutorial is in
+<BR><TT><A NAME="tex2html2"
+  HREF="
+http://doc.trolltech.com/4.4/tutorials-tutorial.html
+">http://doc.trolltech.com/4.4/tutorials-tutorial.html
+</A></TT>You must complete the 14 tutorial chapter. Again, we insist you do this tutorial
+by editing file into the next level. Do no just download the next stage of files.
+You will learn much more from reflecting on mistakes and actually putting
+in the lines of code.
+
+<OL>
+<LI>Hello World!
+</LI>
+<LI>Calling it Quits
+</LI>
+<LI>Family Values
+</LI>
+<LI>Let There Be Widgets
+</LI>
+<LI>Building Blocks
+</LI>
+<LI>Building Blocks Galore!
+</LI>
+<LI>One Thing Leads to Another
+</LI>
+<LI>Preparing for Battle
+</LI>
+<LI>With Cannon You Can
+</LI>
+<LI>Smooth as Silk
+</LI>
+<LI>Giving It a Shot
+</LI>
+<LI>Hanging in the Air the Way Bricks Don't
+</LI>
+<LI>Game Over
+</LI>
+<LI>Facing the Wall
+</LI>
+</OL>
+As we suggested, do at least one
+<TT>svn commit</TT> at the end of each chapter.
+Each new version is committed, not each new file. Use tags
+to tags the chapter version in case you do more frequent commits.
+Look at for <TT>svn</TT> documentation 
+<BR><TT><A NAME="tex2html3"
+  HREF="
+http://svnbook.red-bean.com/en/1.1/ch04s06.html
+">http://svnbook.red-bean.com/en/1.1/ch04s06.html
+</A></TT>A <EM>tag</EM> 
+is a copy of the state of your files in a folder at a particular time.
+For grading purposes by your lecturer/tutor it is important
+to tag the version after the end of each chapter of the
+<TT>Qt</TT> tutorials.
+The tags should be <TT>t1</TT>, <TT>t2</TT>, ..., <TT>t14</TT>.
+
+<P>
+For programming with <TT>Qt</TT>
+there is a reference manual available on the WEB
+<BR><TT><A NAME="tex2html4"
+  HREF="
+http://doc.trolltech.com/4.4/index.html
+">http://doc.trolltech.com/4.4/index.html
+</A></TT>
+<P>
+<BLOCKQUOTE>
+<B>Important:</B> 
+You may need to install 
+<TT>Qt</TT> for LINUX and/or MacOs. This is usually a simple process.
+Follow the instruction on the Qt web-site if you have problems
+installing but under LINUX is usually a standard package and
+also on MacOS, <TT>port</TT> can install it rather easy.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Depending on what is installed the command to build
+projects with <TT>Qt</TT> may change to indicate the version installed.
+Sometimes it is
+<TT>qmake-qt4</TT>
+sometime is simply
+<TT>qmake</TT>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Typically, the setting up of a Makefile and the compiling is achieved with the
+three steps below:
+
+<DIV ALIGN="LEFT">
+<TT>qmake-qt4 -project</TT>
+<BR><TT>qmake-qt4 </TT>
+<BR><TT>make </TT>
+<BR>
+</DIV>
+</BLOCKQUOTE>
+<P>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html86"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html84"
+  HREF="Practica03.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html78"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html87"
+  HREF="node8.html">Task   the</A>
+<B> Up:</B> <A NAME="tex2html85"
+  HREF="Practica03.html">AI 4 Games Assessment</A>
+<B> Previous:</B> <A NAME="tex2html79"
+  HREF="node6.html">Task</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Vladimir Estivill-Castro
+2011-12-24
+</ADDRESS>
+</BODY>
+</HTML>
