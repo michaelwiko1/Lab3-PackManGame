@@ -18,7 +18,6 @@ BoardCells::BoardCells():QGridLayout ()
 	}
 }
 
-
 void BoardCells::forwardChangeColor(int i, int j, char c)
 { 
 	QColor temp;

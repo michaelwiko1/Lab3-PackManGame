@@ -12,8 +12,9 @@ void GameCell::setColor(QColor aColor) {
     setPalette(QPalette(currentColor));
 }
 
-
+//!This function is useless so at least it won't spit an error.
 void GameCell::paintEvent(QPaintEvent *event) {
+    event = event;
 }
 
 

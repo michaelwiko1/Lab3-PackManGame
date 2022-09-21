@@ -63,6 +63,20 @@ Controller::Controller(QWidget *parent) : QWidget(parent) {
 
 Controller::~Controller() {
     delete gameTimer;
+
+    delete downButton;
+
+    delete leftButton;
+
+    delete rightButton;
+
+    delete upButton;
+
+    delete startButton;
+
+    delete myModel;
+
+    delete myBoard;
 }
 
 void Controller::startGame() {

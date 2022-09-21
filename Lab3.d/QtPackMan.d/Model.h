@@ -77,6 +77,15 @@ public:
 
     };
 
+
+    /*
+    ~Model()
+    {
+        delete myController;
+
+        delete startPlayer;
+    };*/
+
     bool setModelOK() { return setOK; };
 
 
