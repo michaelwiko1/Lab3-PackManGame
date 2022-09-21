@@ -14,7 +14,6 @@ void GameCell::setColor(QColor aColor) {
 
 
 void GameCell::paintEvent(QPaintEvent *event) {
-
 }
 
 

@@ -1,7 +1,7 @@
 #ifndef GAME_CELL_H
 #define GAME_CELL_H
 
-#include <QWidget>
+#include <qwidget.h>
 
 class GameCell : public QWidget {
     Q_OBJECT

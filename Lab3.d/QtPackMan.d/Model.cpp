@@ -50,6 +50,8 @@ char game_all(p_ListBoardObjects aList) {
             return 'I';
         case BACKGROUND :
             return '*';
+        default:
+            return 'X';
     }
 }
 
