@@ -4,7 +4,9 @@
 #include "GameCell.h"
 #include "Common.h"
 #include <QGridLayout>
-
+/*
+* The class store the pointer of gamecells
+**/
 class BoardCells : public QGridLayout
 {
 
@@ -12,8 +14,16 @@ private:
 	GameCell *theCells[SIZE_X][SIZE_Y];
 
  public:
+ 	/*
+	* The constructor
+	**/
      BoardCells();
-
+	/*
+	* The function can change color
+	* @param i is the coordination of the target cell
+	* @param j is the coordination of the target cell
+	* @param c is the color
+	**/
      void forwardChangeColor(int i, int j, char c);
 
 };
