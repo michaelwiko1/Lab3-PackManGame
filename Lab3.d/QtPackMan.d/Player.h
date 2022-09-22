@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+/*
+ * PlayerState enum stores the state of player
+ */
 enum PlayerState {
     ALIVE, DEAD
 };
@@ -11,11 +14,18 @@ enum PlayerState {
 
 class Player : public BoardObject {
 
+/*
+ * PlayerState enum stores the state of player
+ */
 private:
-    PlayerState status;
-    ObjectColours color1;
-    ObjectColours color2;
+    PlayerState status; //A variable to get the player's status
+    ObjectColours color1; // Variable color1 for object
+    ObjectColours color2; // Variable color2 for object
 
+/*
+ * Constructor
+ * The function initialize the status and colors of the player
+ */    
 public:
     Player(int start_x, int start_y) : BoardObject(start_x, start_y) {
         status = ALIVE;
@@ -23,7 +33,9 @@ public:
         color2 = BLUE;
         myClass = A_PLAYER;
     };
-
+/*
+ * touch function give state to Player
+ */
     virtual void touch();
 };
 
