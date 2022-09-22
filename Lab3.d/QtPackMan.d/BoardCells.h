@@ -20,8 +20,8 @@ private:
      BoardCells();
 	/*
 	* The function can change color
-	* @param i is the coordination of the target cell
-	* @param j is the coordination of the target cell
+	* @param i is the coordination x of the target cell
+	* @param j is the coordination y of the target cell
 	* @param c is the color
 	**/
      void forwardChangeColor(int i, int j, char c);
