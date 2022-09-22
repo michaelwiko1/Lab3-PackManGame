@@ -3,23 +3,37 @@
 
 #include <qwidget.h>
 
+/*
+ * a function for showing Qt GUI for the game
+ */
 class GameCell : public QWidget {
     Q_OBJECT
 private:
     QColor currentColor;
 
 public:
+    /*
+     * a Constructor
+     * @return the pointer
+     */
     GameCell(QWidget *parent = 0);
 
     //QColor currentColor() const { return currentColor; }
 
 public
     slots:
-            void setColor(QColor
-    aColor);
+        /*
+         * a function to set colors from GUI
+         * @return QColoraColor
+         */
+        void setColor(QColoraColor);
 
 protected:
-    void paintEvent(QPaintEvent *event);
+        /*
+         * a function to give colors from GUI
+         * @return the pointer
+         */
+        void paintEvent(QPaintEvent *event);
 
 };
 
