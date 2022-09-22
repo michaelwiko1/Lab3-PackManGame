@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BoardCells.h"
 
+//! This generates a grid layout that the game will take place on.
 BoardCells::BoardCells():QGridLayout ()
 {
     GameCell *aCell;
