@@ -31,10 +31,13 @@ public:
                   myClass=A_COOKIE;
 		};
 	/**
-	*
+	* getting the prize value
+	* @return the value index
 	*/
 	int get_value(); 
-
+	/**
+	* check if two objects collapsed.
+	*/
 	void touch ();
 };
 #endif
