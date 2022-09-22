@@ -31,25 +31,29 @@ class Controller : public QWidget {
     QPushButton *rightButton;        // rigght button
 
 
-    QTimer *gameTimer;        //
+    QTimer *gameTimer;        // the pointer to the timer
 
-    bool gameRunning;        //
-    bool setupComplete;        //
+    bool gameRunning;        // bool value to control the game is running
+    bool setupComplete;        // bool value to control if the gama is ready
 
-    Model *myModel;
-    BoardCells *myBoard;
+    Model *myModel;         // the pointer to the model
+    BoardCells *myBoard;    // the pointer to the Boardcell
 
 public:
+    /**
+       * A constructor.
+       * @param the pointer
+       */
     Controller(QWidget *parent = 0);
 
-    ~Controller();
+    ~Controller(); // virtual function
 
 
 private
     slots:
             void startGame();
 
-    void update();
+    void update(); 
 
     void sendUp();
 
@@ -58,7 +62,12 @@ private
     void sendLeft();
 
     void sendRight();
-
+    /**
+       * The function change the color
+       * @param i is x coordination
+       * @param j is y coordination 
+       * @param c is color controller 
+       */
     void forwardChangeColor(int i, int j, char c);
 
 };
