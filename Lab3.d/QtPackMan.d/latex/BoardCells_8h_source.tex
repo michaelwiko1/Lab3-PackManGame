@@ -1,0 +1,37 @@
+\hypertarget{BoardCells_8h_source}{}\doxysection{Board\+Cells.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef BOARD\_CELL\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define BOARD\_CELL\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}GameCell.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Common.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QGridLayout>}}
+\DoxyCodeLine{7 \textcolor{comment}{/*}}
+\DoxyCodeLine{8 \textcolor{comment}{* The class store the pointer of gamecells}}
+\DoxyCodeLine{9 \textcolor{comment}{**/}}
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classBoardCells}{BoardCells}} : \textcolor{keyword}{public} QGridLayout}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{classGameCell}{GameCell}} *theCells[SIZE\_X][SIZE\_Y];}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16  \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \textcolor{comment}{/*}}
+\DoxyCodeLine{18 \textcolor{comment}{    * The constructor}}
+\DoxyCodeLine{19 \textcolor{comment}{    **/}}
+\DoxyCodeLine{20      \mbox{\hyperlink{classBoardCells_a0f85282de14194013921b436d5e2d524}{BoardCells}}();}
+\DoxyCodeLine{21     \textcolor{comment}{/*}}
+\DoxyCodeLine{22 \textcolor{comment}{    * The function can change color}}
+\DoxyCodeLine{23 \textcolor{comment}{    * @param i is the coordination x of the target cell}}
+\DoxyCodeLine{24 \textcolor{comment}{    * @param j is the coordination y of the target cell}}
+\DoxyCodeLine{25 \textcolor{comment}{    * @param c is the color}}
+\DoxyCodeLine{26 \textcolor{comment}{    **/}}
+\DoxyCodeLine{27      \textcolor{keywordtype}{void} forwardChangeColor(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j, \textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{32 }
+
+\end{DoxyCode}

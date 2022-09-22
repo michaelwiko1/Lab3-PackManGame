@@ -1,0 +1,71 @@
+\hypertarget{Controller_8h_source}{}\doxysection{Controller.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*  }}
+\DoxyCodeLine{2 \textcolor{comment}{ *}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ */}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef CONTROLLER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define CONTROLLER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <QTimer>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <QPushButton>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Model.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}BoardCells.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}Common.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }QPushButton;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{class }QTimer;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classController}{Controller}} : \textcolor{keyword}{public} QWidget \{}
+\DoxyCodeLine{23     Q\_OBJECT}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25             QPushButton}
+\DoxyCodeLine{26     *}
+\DoxyCodeLine{27     startButton;        \textcolor{comment}{// Starts}}
+\DoxyCodeLine{28     QPushButton *upButton;        \textcolor{comment}{// up button}}
+\DoxyCodeLine{29     QPushButton *downButton;        \textcolor{comment}{// down button}}
+\DoxyCodeLine{30     QPushButton *leftButton;        \textcolor{comment}{// left button}}
+\DoxyCodeLine{31     QPushButton *rightButton;        \textcolor{comment}{// rigght button}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     QTimer *gameTimer;        \textcolor{comment}{// the pointer to the timer}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} gameRunning;        \textcolor{comment}{// bool value to control the game is running}}
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} setupComplete;        \textcolor{comment}{// bool value to control if the gama is ready}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \mbox{\hyperlink{classModel}{Model}} *myModel;         \textcolor{comment}{// the pointer to the model}}
+\DoxyCodeLine{40     \mbox{\hyperlink{classBoardCells}{BoardCells}} *myBoard;    \textcolor{comment}{// the pointer to the Boardcell}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{public}:}
+\DoxyCodeLine{47     \mbox{\hyperlink{classController_adae67c9b69b106cf0778c1e835d070c1}{Controller}}(QWidget *parent = 0);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \mbox{\hyperlink{classController}{\string~Controller}}(); \textcolor{comment}{// deconstructor function}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{private}}
+\DoxyCodeLine{53     slots:}
+\DoxyCodeLine{54             \textcolor{keywordtype}{void} startGame();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} update(); }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{void} sendUp();}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} sendDown();}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} sendLeft();}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} sendRight();}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} forwardChangeColor(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j, \textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{76 }
+
+\end{DoxyCode}

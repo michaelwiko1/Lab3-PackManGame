@@ -1,0 +1,35 @@
+\hypertarget{Cookie_8h_source}{}\doxysection{Cookie.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef H\_COOKIE}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define H\_COOKIE}}
+\DoxyCodeLine{3 \textcolor{keyword}{enum} CookieState \{ VISIBLE, EATEN, EXPIRED\}; \textcolor{comment}{//enum store the state}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{enum} PrizeValueIndex \{CHEAP, MEDIUM, USEFUL, DEAR\}; \textcolor{comment}{//enum store the prize value}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}BoardObject.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classCookie}{Cookie}} : \textcolor{keyword}{public} \mbox{\hyperlink{classBoardObject}{BoardObject}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     CookieState status; }
+\DoxyCodeLine{15     ObjectColours color1;}
+\DoxyCodeLine{16     ObjectColours  color2;}
+\DoxyCodeLine{17     PrizeValueIndex valueIndex; \textcolor{comment}{// relating to the enum}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26     \mbox{\hyperlink{classCookie_a51c4a19c1cff16421279092117d721bd}{Cookie}} (\textcolor{keywordtype}{int} start\_x, \textcolor{keywordtype}{int} start\_y):\mbox{\hyperlink{classBoardObject}{BoardObject}}(start\_x,start\_y)}
+\DoxyCodeLine{27         \{ status=VISIBLE;}
+\DoxyCodeLine{28           color1 = YELLOW;}
+\DoxyCodeLine{29           color2  = BLUE;}
+\DoxyCodeLine{30           valueIndex=CHEAP;}
+\DoxyCodeLine{31                   \mbox{\hyperlink{classBoardObject_a94d093bb880e76422aff0638ff000035}{myClass}}=A\_COOKIE;}
+\DoxyCodeLine{32         \};}
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} \mbox{\hyperlink{classCookie_ae0ec773320b4272d8189e5db71bcec3f}{get\_value}}(); }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCookie_a22048f68c6613b5d95c81ddc518779f7}{touch}} ();}
+\DoxyCodeLine{42 \};}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

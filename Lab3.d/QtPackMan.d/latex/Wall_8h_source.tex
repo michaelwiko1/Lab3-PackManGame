@@ -1,0 +1,32 @@
+\hypertarget{Wall_8h_source}{}\doxysection{Wall.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * WalState enum stores the state of the wall (SOLID)}}
+\DoxyCodeLine{3 \textcolor{comment}{ */}}
+\DoxyCodeLine{4 \textcolor{keyword}{enum} WalState \{}
+\DoxyCodeLine{5     SOLID}
+\DoxyCodeLine{6 \};}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}BoardObject.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classWall}{Wall}} : \textcolor{keyword}{public} \mbox{\hyperlink{classBoardObject}{BoardObject}} \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{private}:}
+\DoxyCodeLine{13     ObjectColours color1; \textcolor{comment}{// variable that controll}}
+\DoxyCodeLine{14 \textcolor{comment}{/*}}
+\DoxyCodeLine{15 \textcolor{comment}{ * Constructor}}
+\DoxyCodeLine{16 \textcolor{comment}{ * Initialize the color of the Wall and wall class}}
+\DoxyCodeLine{17 \textcolor{comment}{ */}}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{classWall}{Wall}}(\textcolor{keywordtype}{int} start\_x, \textcolor{keywordtype}{int} start\_y) : \mbox{\hyperlink{classBoardObject}{BoardObject}}(start\_x, start\_y) \{}
+\DoxyCodeLine{20         color1 = BLACK; }
+\DoxyCodeLine{21         \mbox{\hyperlink{classBoardObject_a94d093bb880e76422aff0638ff000035}{myClass}} = A\_WALL;}
+\DoxyCodeLine{22     \};}
+\DoxyCodeLine{23 \textcolor{comment}{/*}}
+\DoxyCodeLine{24 \textcolor{comment}{ * touch function give state to player (The wall is SOLID)}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} touch();}
+\DoxyCodeLine{27 \};}
+
+\end{DoxyCode}

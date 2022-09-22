@@ -1,0 +1,96 @@
+\hypertarget{BoardObject_8h_source}{}\doxysection{Board\+Object.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef H\_BOARD\_OBJECT}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define H\_BOARD\_OBJECT}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{* ObjectColours enum stores colours }}
+\DoxyCodeLine{5 \textcolor{comment}{* ObjectTypes enum stores the types}}
+\DoxyCodeLine{6 \textcolor{comment}{**/}}
+\DoxyCodeLine{7 \textcolor{keyword}{enum} ObjectColours \{}
+\DoxyCodeLine{8     BLACK, YELLOW, BLUE, RED, INVISIBLE, BACKGROUND}
+\DoxyCodeLine{9 \};}
+\DoxyCodeLine{10 \textcolor{keyword}{enum} ObjectTypes \{}
+\DoxyCodeLine{11     THE\_BACKGROUND, A\_COOKIE, A\_PLAYER, A\_WALL}
+\DoxyCodeLine{12 \};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classBoardObject}{BoardObject}} \{}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{private}:}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} x, y; }
+\DoxyCodeLine{19     ObjectColours currentColor;  }
+\DoxyCodeLine{20 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{21     ObjectTypes \mbox{\hyperlink{classBoardObject_a94d093bb880e76422aff0638ff000035}{myClass}}; }
+\DoxyCodeLine{22     \textcolor{comment}{//int unique\_ID;}}
+\DoxyCodeLine{23     \textcolor{comment}{//static int count;}}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \textcolor{comment}{/*}}
+\DoxyCodeLine{26 \textcolor{comment}{    * The constructor}}
+\DoxyCodeLine{27 \textcolor{comment}{    * The function initialize the type and color and coordination.}}
+\DoxyCodeLine{28 \textcolor{comment}{    * @param start\_x the starting point of x coordination}}
+\DoxyCodeLine{29 \textcolor{comment}{    * @param start\_y the starting point of y coordination}}
+\DoxyCodeLine{30 \textcolor{comment}{    **/}}
+\DoxyCodeLine{31     \mbox{\hyperlink{classBoardObject}{BoardObject}}(\textcolor{keywordtype}{int} start\_x, \textcolor{keywordtype}{int} start\_y) \{}
+\DoxyCodeLine{32         x = start\_x;}
+\DoxyCodeLine{33         y = start\_y;}
+\DoxyCodeLine{34         currentColor = BACKGROUND;}
+\DoxyCodeLine{35         \mbox{\hyperlink{classBoardObject_a94d093bb880e76422aff0638ff000035}{myClass}} = THE\_BACKGROUND;}
+\DoxyCodeLine{36         \textcolor{comment}{//unique\_ID=count++;}}
+\DoxyCodeLine{37     \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{//int get\_ID() \{ return unique\_ID;\};}}
+\DoxyCodeLine{40     \textcolor{comment}{/*}}
+\DoxyCodeLine{41 \textcolor{comment}{    * @return The x value}}
+\DoxyCodeLine{42 \textcolor{comment}{    **/}}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} get\_x() \{}
+\DoxyCodeLine{44         \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{45     \};}
+\DoxyCodeLine{46     \textcolor{comment}{/*}}
+\DoxyCodeLine{47 \textcolor{comment}{    * @return The y value}}
+\DoxyCodeLine{48 \textcolor{comment}{    **/}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{int} get\_y() \{}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} y;}
+\DoxyCodeLine{51     \};}
+\DoxyCodeLine{52     \textcolor{comment}{/*}}
+\DoxyCodeLine{53 \textcolor{comment}{    * @return The current type}}
+\DoxyCodeLine{54 \textcolor{comment}{    **/}}
+\DoxyCodeLine{55     ObjectTypes get\_Type() \{}
+\DoxyCodeLine{56         \textcolor{keywordflow}{return} \mbox{\hyperlink{classBoardObject_a94d093bb880e76422aff0638ff000035}{myClass}};}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58     \textcolor{comment}{/*}}
+\DoxyCodeLine{59 \textcolor{comment}{    * @return The current colour}}
+\DoxyCodeLine{60 \textcolor{comment}{    **/}}
+\DoxyCodeLine{61     ObjectColours get\_Color() \{ \textcolor{keywordflow}{return} currentColor; \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{comment}{/*}}
+\DoxyCodeLine{64 \textcolor{comment}{    * The virtual function }}
+\DoxyCodeLine{65 \textcolor{comment}{    * Reset the color}}
+\DoxyCodeLine{66 \textcolor{comment}{    **/}}
+\DoxyCodeLine{67     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} touch() \{ currentColor = BACKGROUND; \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{70     \textcolor{comment}{/*}}
+\DoxyCodeLine{71 \textcolor{comment}{    * @param new\_color the new color}}
+\DoxyCodeLine{72 \textcolor{comment}{    * Reset the color}}
+\DoxyCodeLine{73 \textcolor{comment}{    **/}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} set\_color(ObjectColours new\_color) \{ currentColor = new\_color; \};}
+\DoxyCodeLine{75     \textcolor{comment}{/*}}
+\DoxyCodeLine{76 \textcolor{comment}{    * @param new\_x the new x}}
+\DoxyCodeLine{77 \textcolor{comment}{    * Reset the x}}
+\DoxyCodeLine{78 \textcolor{comment}{    **/}}
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} set\_x(\textcolor{keywordtype}{int} new\_x) \{ x = new\_x; \};}
+\DoxyCodeLine{80     \textcolor{comment}{/*}}
+\DoxyCodeLine{81 \textcolor{comment}{    * @param new\_y the new y}}
+\DoxyCodeLine{82 \textcolor{comment}{    * Reset the y}}
+\DoxyCodeLine{83 \textcolor{comment}{    **/}}
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} set\_y(\textcolor{keywordtype}{int} new\_y) \{ y = new\_y; \};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{comment}{//int BoardObject::count=0;}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// H\_BOARD\_OBJECT}}
+\DoxyCodeLine{91 }
+
+\end{DoxyCode}

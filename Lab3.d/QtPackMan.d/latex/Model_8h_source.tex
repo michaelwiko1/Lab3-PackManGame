@@ -1,0 +1,136 @@
+\hypertarget{Model_8h_source}{}\doxysection{Model.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MODEL\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MODEL\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define ROWS 20}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define COLUMNS 20}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include  "{}BoardObject.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include  "{}ListBoardObjects.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include  "{}Player.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include  "{}Wall.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include  "{}Cookie.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include  <QWidget>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classController}{Controller}};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{typedef} \mbox{\hyperlink{classListBoardObjects}{ListBoardObjects}} *\mbox{\hyperlink{classListBoardObjects}{p\_ListBoardObjects}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classModel}{Model}} : \textcolor{keyword}{public} QWidget \{}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     Q\_OBJECT}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{private}:}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} the\_rows, the\_cols; \textcolor{comment}{// to map the game with rows and columns}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{bool} setOK; \textcolor{comment}{// a boolean variable to prepare the game}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{bool} gameOn; \textcolor{comment}{// a boolean variable to start a game}}
+\DoxyCodeLine{29     \textcolor{keywordtype}{int} lives; \textcolor{comment}{// a variable for player's life in interger}}
+\DoxyCodeLine{30     \mbox{\hyperlink{classListBoardObjects}{p\_ListBoardObjects}} mySpace[ROWS][COLUMNS]; \textcolor{comment}{//a variable called mySpace to create ROWS and COLUMNS}}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} player\_id\_x; \textcolor{comment}{// player position x-\/axis}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} player\_id\_y; \textcolor{comment}{// player position y-\/axis}}
+\DoxyCodeLine{33     \mbox{\hyperlink{classPlayer}{Player}} *startPlayer; \textcolor{comment}{// a pointer to Player for start}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} currentScore;\textcolor{comment}{// show value of the current score}}
+\DoxyCodeLine{35     \mbox{\hyperlink{classController}{Controller}} *myController; \textcolor{comment}{// a pointer to Controller}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{public}:}
+\DoxyCodeLine{39     }
+\DoxyCodeLine{40     \textcolor{comment}{/*}}
+\DoxyCodeLine{41 \textcolor{comment}{     * Constructor}}
+\DoxyCodeLine{42 \textcolor{comment}{     * @param rows is to set the mapping of the game (x-\/axis)}}
+\DoxyCodeLine{43 \textcolor{comment}{     * @param columns is to set the mapping of the game (y-\/axis)}}
+\DoxyCodeLine{44 \textcolor{comment}{     */}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \mbox{\hyperlink{classModel}{Model}}(\textcolor{keywordtype}{int} rows, \textcolor{keywordtype}{int} cols) \{}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{keywordflow}{if} ((ROWS >= rows) \&\& (COLUMNS >= cols)) \{}
+\DoxyCodeLine{49             setOK = \textcolor{keyword}{false};}
+\DoxyCodeLine{50             the\_rows = rows;}
+\DoxyCodeLine{51             the\_cols = cols;}
+\DoxyCodeLine{52             lives = 3000000;}
+\DoxyCodeLine{53             gameOn = \textcolor{keyword}{true};}
+\DoxyCodeLine{54             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < rows; i++)}
+\DoxyCodeLine{55                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < cols; j++) \{}
+\DoxyCodeLine{56                     \mbox{\hyperlink{classBoardObject}{BoardObject}} *aBackground = \textcolor{keyword}{new} \mbox{\hyperlink{classBoardObject}{BoardObject}}(i, j);}
+\DoxyCodeLine{57                     \mbox{\hyperlink{classListBoardObjects}{p\_ListBoardObjects}} aList = \textcolor{keyword}{new} \mbox{\hyperlink{classListBoardObjects}{ListBoardObjects}}(aBackground);}
+\DoxyCodeLine{58                     mySpace[i][j] = aList;}
+\DoxyCodeLine{59                 \}}
+\DoxyCodeLine{60             player\_id\_x = the\_rows / 2;}
+\DoxyCodeLine{61             player\_id\_y = the\_cols / 2;}
+\DoxyCodeLine{62             startPlayer = \textcolor{keyword}{new} \mbox{\hyperlink{classPlayer}{Player}}(player\_id\_x, player\_id\_y);}
+\DoxyCodeLine{63             currentScore = 0;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65             (mySpace[player\_id\_x][player\_id\_y])-\/>addOne(startPlayer);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < the\_rows -\/ 1; i++) \{}
+\DoxyCodeLine{68                 \mbox{\hyperlink{classWall}{Wall}} *aWall = \textcolor{keyword}{new} \mbox{\hyperlink{classWall}{Wall}}(i, 1);}
+\DoxyCodeLine{69                 (mySpace[i][1])-\/>addOne(aWall);}
+\DoxyCodeLine{70                 aWall = \textcolor{keyword}{new} \mbox{\hyperlink{classWall}{Wall}}(i, the\_cols -\/ 2);}
+\DoxyCodeLine{71                 (mySpace[i][the\_cols -\/ 2])-\/>addOne(aWall);}
+\DoxyCodeLine{72             \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < the\_rows -\/ 1; i = i + 2) \{}
+\DoxyCodeLine{75                 \mbox{\hyperlink{classCookie}{Cookie}} *aCookie = \textcolor{keyword}{new} \mbox{\hyperlink{classCookie}{Cookie}}(i, 0);}
+\DoxyCodeLine{76                 (mySpace[i][0])-\/>addOne(aCookie);}
+\DoxyCodeLine{77                 aCookie = \textcolor{keyword}{new} \mbox{\hyperlink{classCookie}{Cookie}}(i, the\_cols -\/ 1);}
+\DoxyCodeLine{78                 (mySpace[i][the\_cols -\/ 1])-\/>addOne(aCookie);}
+\DoxyCodeLine{79             \}}
+\DoxyCodeLine{80             setOK = \textcolor{keyword}{true};}
+\DoxyCodeLine{81         \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{82             setOK = \textcolor{keyword}{false};}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{/*}}
+\DoxyCodeLine{88 \textcolor{comment}{    \string~Model()}}
+\DoxyCodeLine{89 \textcolor{comment}{    \{}}
+\DoxyCodeLine{90 \textcolor{comment}{        delete myController;}}
+\DoxyCodeLine{91 \textcolor{comment}{}}
+\DoxyCodeLine{92 \textcolor{comment}{        delete startPlayer;}}
+\DoxyCodeLine{93 \textcolor{comment}{    \};*/}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{comment}{/*}}
+\DoxyCodeLine{96 \textcolor{comment}{     * @return setOK value}}
+\DoxyCodeLine{97 \textcolor{comment}{     */}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{bool} setModelOK() \{ \textcolor{keywordflow}{return} setOK; \};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{comment}{/*}}
+\DoxyCodeLine{101 \textcolor{comment}{     * @return lives value (boolean)}}
+\DoxyCodeLine{102 \textcolor{comment}{     */}}
+\DoxyCodeLine{103     \textcolor{keywordtype}{bool} IamAlive() \{}
+\DoxyCodeLine{104         \textcolor{keywordflow}{if} (0 < lives) \{}
+\DoxyCodeLine{105             lives-\/-\/;}
+\DoxyCodeLine{106             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{107         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{108     \}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{keyword}{public}}
+\DoxyCodeLine{111     slots:}
+\DoxyCodeLine{112         \textcolor{comment}{/*}}
+\DoxyCodeLine{113 \textcolor{comment}{         * function to player based on command}}
+\DoxyCodeLine{114 \textcolor{comment}{         */}}
+\DoxyCodeLine{115         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{char} command);}
+\DoxyCodeLine{116         \textcolor{comment}{/*}}
+\DoxyCodeLine{117 \textcolor{comment}{         * function to color the game}}
+\DoxyCodeLine{118 \textcolor{comment}{         */}}
+\DoxyCodeLine{119         \textcolor{keywordtype}{void} paint();}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     signals:}
+\DoxyCodeLine{122        \textcolor{comment}{/*}}
+\DoxyCodeLine{123 \textcolor{comment}{        * The function can change color}}
+\DoxyCodeLine{124 \textcolor{comment}{        * @param i is the coordination x of the target cell}}
+\DoxyCodeLine{125 \textcolor{comment}{        * @param j is the coordination y of the target cell}}
+\DoxyCodeLine{126 \textcolor{comment}{        * @param draw is the variable for character}}
+\DoxyCodeLine{127 \textcolor{comment}{        */}}
+\DoxyCodeLine{128         \textcolor{keywordtype}{void} cellChanged(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j, \textcolor{keywordtype}{char} draw);}
+\DoxyCodeLine{129 \};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
