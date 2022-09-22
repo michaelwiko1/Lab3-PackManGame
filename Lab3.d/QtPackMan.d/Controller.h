@@ -46,7 +46,7 @@ public:
        */
     Controller(QWidget *parent = 0);
 
-    ~Controller(); // virtual function
+    ~Controller(); // deconstructor function
 
 
 private
